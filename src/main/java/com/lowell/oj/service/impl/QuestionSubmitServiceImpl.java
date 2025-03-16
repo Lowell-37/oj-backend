@@ -10,6 +10,7 @@ import com.lowell.oj.common.ErrorCode;
 import com.lowell.oj.constant.CommonConstant;
 import com.lowell.oj.exception.BusinessException;
 import com.lowell.oj.exception.ThrowUtils;
+import com.lowell.oj.judge.JudgeService;
 import com.lowell.oj.mapper.QuestionSubmitMapper;
 import com.lowell.oj.model.dto.question.QuestionQueryRequest;
 import com.lowell.oj.model.dto.questionsubmit.QuestionSubmitAddRequest;
@@ -26,8 +27,11 @@ import com.lowell.oj.service.QuestionService;
 import com.lowell.oj.service.QuestionSubmitService;
 import com.lowell.oj.service.UserService;
 import com.lowell.oj.utils.SqlUtils;
+import io.netty.util.concurrent.CompleteFuture;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.xmlbeans.impl.jam.JamService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -35,6 +39,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 /**
@@ -50,6 +55,10 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
 
     @Resource
     private UserService userService;
+
+    @Resource
+    @Lazy
+    private JudgeService judgeService;
 
     /**
      * 点赞
@@ -89,7 +98,12 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "数据插入失败");
 
         }
-        return questionSubmit.getId();
+        Long questionSubmitId = questionSubmit.getId();
+        // 执行判题服务
+        CompletableFuture.runAsync(() -> {
+            judgeService.doJudge(questionSubmitId);
+        });
+        return questionSubmitId;
     }
 
     /**
