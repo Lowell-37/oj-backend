@@ -1,7 +1,6 @@
 package com.lowell.oj.judge.codesandbox.model;
 
 
-import com.lowell.oj.model.dto.questionsubmit.JudgeInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

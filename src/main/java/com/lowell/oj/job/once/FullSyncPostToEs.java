@@ -4,18 +4,17 @@ import com.lowell.oj.esdao.PostEsDao;
 import com.lowell.oj.model.dto.post.PostEsDTO;
 import com.lowell.oj.model.entity.Post;
 import com.lowell.oj.service.PostService;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
+
 import lombok.extern.slf4j.Slf4j;
 import cn.hutool.core.collection.CollUtil;
 import org.springframework.boot.CommandLineRunner;
 
 /**
  * 全量同步帖子到 es
- *
- * @author <a href="https://github.com/lilowell">程序员鱼皮</a>
- * @from <a href="https://lowell.icu">编程导航知识星球</a>
  */
 // todo 取消注释开启任务
 //@Component

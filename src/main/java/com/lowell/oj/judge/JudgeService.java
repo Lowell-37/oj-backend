@@ -1,7 +1,6 @@
 package com.lowell.oj.judge;
 
 import com.lowell.oj.model.entity.QuestionSubmit;
-import com.lowell.oj.model.vo.QuestionSubmitVO;
 
 /**
  * @Date: 2025/3/16 11:02

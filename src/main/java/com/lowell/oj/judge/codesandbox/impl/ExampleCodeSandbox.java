@@ -3,7 +3,7 @@ package com.lowell.oj.judge.codesandbox.impl;
 import com.lowell.oj.judge.codesandbox.CodeSandbox;
 import com.lowell.oj.judge.codesandbox.model.ExecuteCodeRequest;
 import com.lowell.oj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.lowell.oj.model.dto.questionsubmit.JudgeInfo;
+import com.lowell.oj.judge.codesandbox.model.JudgeInfo;
 import com.lowell.oj.model.enums.JudgeInfoMessageEnum;
 import com.lowell.oj.model.enums.QuestionSubmitStatusEnum;
 

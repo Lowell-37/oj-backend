@@ -49,7 +49,7 @@ public class QuestionAddRequest implements Serializable {
     /**
      * 判题配置
      */
-    private List<JudgeConfig> judgeConfig;
+    private JudgeConfig judgeConfig;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

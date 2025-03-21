@@ -2,7 +2,7 @@ package com.lowell.oj.model.vo;
 
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.lowell.oj.model.dto.questionsubmit.JudgeInfo;
+import com.lowell.oj.judge.codesandbox.model.JudgeInfo;
 import com.lowell.oj.model.entity.QuestionSubmit;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -11,11 +11,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 题目视图
+ * 题目提交封装类
+ * @TableName question
  */
 @Data
 public class QuestionSubmitVO implements Serializable {
-
     /**
      * id
      */
@@ -32,12 +32,12 @@ public class QuestionSubmitVO implements Serializable {
     private String code;
 
     /**
-     * 判题 信息
+     * 判题信息
      */
     private JudgeInfo judgeInfo;
 
     /**
-     * 判题状态（0-待判题  1- 判题中 2- 成功  3-失败）
+     * 判题状态（0 - 待判题、1 - 判题中、2 - 成功、3 - 失败）
      */
     private Integer status;
 
@@ -67,12 +67,9 @@ public class QuestionSubmitVO implements Serializable {
     private UserVO userVO;
 
     /**
-     * 对应提交题目信息
+     * 对应题目信息
      */
     private QuestionVO questionVO;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     /**
      * 包装类转对象
@@ -90,7 +87,6 @@ public class QuestionSubmitVO implements Serializable {
         if (judgeInfoObj != null) {
             questionSubmit.setJudgeInfo(JSONUtil.toJsonStr(judgeInfoObj));
         }
-
         return questionSubmit;
     }
 
@@ -111,4 +107,5 @@ public class QuestionSubmitVO implements Serializable {
         return questionSubmitVO;
     }
 
+    private static final long serialVersionUID = 1L;
 }

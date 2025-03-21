@@ -1,7 +1,7 @@
 package com.lowell.oj.judge.strategy;
 
 import com.lowell.oj.model.dto.question.JudgeCase;
-import com.lowell.oj.model.dto.questionsubmit.JudgeInfo;
+import com.lowell.oj.judge.codesandbox.model.JudgeInfo;
 import com.lowell.oj.model.entity.Question;
 import com.lowell.oj.model.entity.QuestionSubmit;
 import lombok.Data;
